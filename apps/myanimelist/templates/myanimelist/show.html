@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="{% static 'myanimelist/style2.css' %}" rel="stylesheet">
+    <title>Details</title>
+</head>
+<body>
+    <div id=wrapper>
+        <div id=heading>
+            <h1 id=headname>2018 Winter Animelist</h1>
+            <a href="/home">Home</a>
+            <a href="/logout">Logout</a>
+        </div>
+        <div id=sidebar>
+            <img src={{anime.image.url}}><br>
+            <p id=name>Name:{{anime.name}}</p><br>
+            <p id=desc>Genre:{{anime.genre}}</p><br>
+            <p id=original>Studios:{{anime.original}}</p><br>
+            <p id=website><a href={{anime.website}}>Offical Website</a></p><br><br>
+            <a href="/addwatchlistprocess/{{anime.id}}">Add to my watchlist</a>
+
+        </div>
+        <div id=maincontent>
+            <div id=description>
+                <h2>Description:</h2>
+                <p id=description>{{anime.desc}}</p>
+                <iframe width="700" height="500" src="https://www.youtube.com/embed/{{anime.youtube}}">
+                </iframe>
+                
+            </div>
+            <div id=divideline></div>
+            <div id=comment>
+                <p id=post>Post a review:</p>
+                <form action="/addcommentprocess/{{anime.id}}" method="post">
+                    {% csrf_token %}
+                    <br><textarea name="comment" rows="5" cols="100"></textarea><br>
+                    Rating:<br>
+                    <input type="radio" name="rating" value="☆">☆
+                    <input type="radio" name="rating" value="☆☆">☆☆
+                    <input type="radio" name="rating" value="☆☆☆">☆☆☆
+                    <input type="radio" name="rating" value="☆☆☆☆">☆☆☆☆
+                    <input type="radio" name="rating" value="☆☆☆☆☆">☆☆☆☆☆<br><br>
+                    <button>Add Review</button>
+                </form>
+                <div id=userreview>
+                    <h3>User review:</h3>
+                    {%for comment in comment%}
+                    <p id=rating>Rating:{{comment.rating}}</p>
+                    <p id=username>By: <a href="/profile/{{comment.commenter.id}}">{{comment.commenter.name}}</a></p>
+                    <p>{{comment.content}}</p><br>
+
+                    {% if user.id == comment.commenter.id %}
+                    <a href="/delete/{{comment.id}}">Delete this review</a><br>
+                    {%endif%}
+
+
+                    -----------------------------------------------------------------------------------------------------------------------------------
+                    {%endfor%}
+                </div>
+               
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

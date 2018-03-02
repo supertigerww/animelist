@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="{% static 'myanimelist/style.css' %}" rel="stylesheet">
+    <title>2018 winter animelist</title>
+</head>
+<body>
+    <div id=outwrapper>
+            <div id=wrapper>
+                    <div id=header>
+                        <h1 id=headname>2018 Winter Animelist</h1>
+                        <p id=nickname>Welcome!! {{user.name}}</p><br>
+                        <a href="/logout">Logout</a><br>
+                        <br>
+                        <a href="/mywatchlist">My Watchlist</a>
+                    </div>
+                    <div class=weekday>
+                        <div class=dayheader>
+                            <h2 class=day>Monday</h2>
+                        </div>
+                        {% for anime in mondaylist%}
+                        <div class=single>
+                            <img src={{anime.image.url}}><br>
+                            <p class=title><a href="anime/{{anime.id}}">{{anime.name}}</a></p><br>
+                            <p class=genre>{{anime.genre}}</p>
+                        </div>
+                        {%endfor%}
+                    </div>
+                    <div class=weekday>
+                        <div class=dayheader>
+                            <h2 class=day>Tuesday</h2>
+                        </div>
+                        {% for anime in tuesdaylist%}
+                        <div class=single>
+                            <img src={{anime.image.url}}><br>
+                            <p class=title><a href="anime/{{anime.id}}">{{anime.name}}</a></p><br>
+                            <p class=genre>{{anime.genre}}</p>
+                        </div>
+                        {%endfor%}
+                    </div>
+                    <div class=weekday>
+                        <div class=dayheader>
+                            <h2 class=day>Wednesday</h2>
+                        </div>
+                        {% for anime in wednesdaylist%}
+                        <div class=single>
+                            <img src={{anime.image.url}}><br>
+                            <p class=title><a href="anime/{{anime.id}}">{{anime.name}}</a></p><br>
+                            <p class=genre>{{anime.genre}}</p>
+                        </div>
+                        {%endfor%}
+                    </div>
+                    <div class=weekday>
+                        <div class=dayheader><h2 class=day>Thursday</h2></div>
+                        {% for anime in thursdaylist%}
+                        <div class=single>
+                            <img src={{anime.image.url}}><br>
+                            <p class=title><a href="anime/{{anime.id}}">{{anime.name}}</a></p><br>
+                            <p class=genre>{{anime.genre}}</p>
+                        </div>
+                        {%endfor%}
+                    </div>
+                    <div class=weekday>
+                        <div class=dayheader>
+                            <h2 class=day>Friday</h2>
+                        </div>
+                        {% for anime in fridaylist%}
+                        <div class=single>
+                            <img src={{anime.image.url}}><br>
+                            <p class=title><a href="anime/{{anime.id}}">{{anime.name}}</a></p><br>
+                            <p class=genre>{{anime.genre}}</p>
+                        </div>
+                        {%endfor%}
+                    </div>
+                    <div class=weekday>
+                        <div class=dayheader>
+                            <h2 class=day>Saturday</h2>
+                        </div>
+                        {% for anime in saturdaylist%}
+                        <div class=single>
+                            <img src={{anime.image.url}}><br>
+                            <p class=title><a href="anime/{{anime.id}}">{{anime.name}}</a></p><br>
+                            <p class=genre>{{anime.genre}}</p>
+                        </div>
+                        {%endfor%}
+                    </div>
+                    <div class=weekday>
+                        <div class=dayheader>
+                            <h2 class=day>Sunday</h2>
+                        </div>
+                        {% for anime in sundaylist%}
+                        <div class=single>
+                            <img src={{anime.image.url}}><br>
+                            <p class=title><a href="anime/{{anime.id}}">{{anime.name}}</a></p><br>
+                            <p class=genre>{{anime.genre}}</p>
+                        </div>
+                        {%endfor%}
+                    </div>
+                </div>
+
+    </div>
+    
+</body>
+</html>
